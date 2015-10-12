@@ -1,0 +1,24 @@
+{
+  "name": "cordova-connection",
+  "version": "0.1.0",
+  "authors": [
+    "Adrian de la Rosa <adrian@delarosab.me>"
+  ],
+  "description": "An element providing connection information for cordova applications.",
+  "keywords": [
+    "web-component",
+    "polymer",
+    "cordova",
+    "connection"
+  ],
+  "main": "cordova-connection.html",
+  "license": "https://raw.githubusercontent.com/adelarosab/cordova-connection/master/LICENSE",
+  "homepage": "https://github.com/adelarosab/cordova-connection/",
+  "dependencies": {
+    "polymer": "Polymer/polymer#^1.1.0",
+    "cordova-device": "~0.1.3"
+  },
+  "devDependencies": {
+    "iron-component-page": "PolymerElements/iron-component-page#^1.0.0"
+  }
+}
