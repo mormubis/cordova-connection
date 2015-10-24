@@ -2,12 +2,15 @@ Polymer:
   is: "cordova-connection"
 
   properties:
+    ### Return if cordova deviceready event has been fired. ###
     ready:
       notify: yes
       observer: "_observeReady"
       readOnly: yes
       type: Boolean
       value: no
+    ### Offers a fast way to determine the device's network connection state, and
+   type of connection ###
     type:
       readOnly: yes
       reflectToAttribute: yes
@@ -15,26 +18,17 @@ Polymer:
       value: "unknown"
 
   _observeType: ->
-    connection = navigator.connection
+    Connection = navigator.connection
+    types = {}
+    types[Connection.CELL] = "cell"
+    types[Connection.CELL_2G] = "2G"
+    types[Connection.CELL_3G] = "3G"
+    types[Connection.CELL_4G] = "4G"
+    types[Connection.ETHERNET] = "ethernet"
+    types[Connection.NONE] = "none"
+    types[Connection.WIFI] = "wifi"
 
-    @_setType switch connection.type
-      when connection.CELL
-        "cell"
-      when connection.CELL_2G
-        "2G"
-      when connection.CELL_3G
-        "3G"
-      when connection.CELL_4G
-        "4G"
-      when connection.ETHERNET
-        "ethernet"
-      when connection.WIFI
-        "wifi"
-      when connection.NONE
-        "none"
-      else
-        "unkown"
-
+    @_setType types[Connection.type] || "unkown"
 
   attached: ->
     observer = @_observeType

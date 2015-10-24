@@ -4,6 +4,8 @@
     Polymer: {
       is: "cordova-connection",
       properties: {
+
+        /* Return if cordova deviceready event has been fired. */
         ready: {
           notify: true,
           observer: "_observeReady",
@@ -11,6 +13,10 @@
           type: Boolean,
           value: false
         },
+
+        /* Offers a fast way to determine the device's network connection state, and
+           type of connection
+         */
         type: {
           readOnly: true,
           reflectToAttribute: true,
@@ -19,28 +25,17 @@
         }
       },
       _observeType: function() {
-        var connection;
-        connection = navigator.connection;
-        return this._setType((function() {
-          switch (connection.type) {
-            case connection.CELL:
-              return "cell";
-            case connection.CELL_2G:
-              return "2G";
-            case connection.CELL_3G:
-              return "3G";
-            case connection.CELL_4G:
-              return "4G";
-            case connection.ETHERNET:
-              return "ethernet";
-            case connection.WIFI:
-              return "wifi";
-            case connection.NONE:
-              return "none";
-            default:
-              return "unkown";
-          }
-        })());
+        var Connection, types;
+        Connection = navigator.connection;
+        types = {};
+        types[Connection.CELL] = "cell";
+        types[Connection.CELL_2G] = "2G";
+        types[Connection.CELL_3G] = "3G";
+        types[Connection.CELL_4G] = "4G";
+        types[Connection.ETHERNET] = "ethernet";
+        types[Connection.NONE] = "none";
+        types[Connection.WIFI] = "wifi";
+        return this._setType(types[Connection.type] || "unkown");
       },
       attached: function() {
         var observer, offlineFn, onlineFn;
