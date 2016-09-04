@@ -1,37 +1,76 @@
 <!doctype html>
 <html>
   <head>
-    <!-- META -->
+    <link rel="import" href="../cordova-connection.html">
+    <link rel="import" href="../../iron-icon/iron-icon.html">
+    <link rel="import" href="../../iron-icons/iron-icons.html">
+    <link rel="import" href="../../iron-icons/device-icons.html.html">
+
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
 
-    <!-- TITLE -->
-    <title>cordova-connection Demo</title>
+    <title>cordova-compass Demo</title>
 
-    <!-- COMPONENT -->
-    <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
-    <link rel="import" href="../cordova-connection.html">
+    <script src="../../webcomponentsjs/webcomponents-lite.min.js"></script>
   </head>
-  <body unresolved>
+  <body>
+    <style>
+      iron-icon {
+
+      }
+
+      iron-icon[icon="device:signal-cellular-null"] {
+        color: #f44336;
+      }
+    </style>
+
     <cordova-connection></cordova-connection>
-    <section>
-      <header>
-        <h1>Connection Information</h1>
-      </header>
-      <main>
-        You are actually <label class="status">[STATUS]</label>
-      </main>
-    </section>
+
+    <iron-icon icon="device:signal-cellular-null"></iron-icon>
+
     <script>
-      var connectionEl = document.querySelector('cordova-connection');
-      connectionEl.addEventListener('type-changed', function(type) {
-        var status = document.querySelector('.status');
-        if (type !== 'none') {
-          status.innerHTML = 'connected using ' + type;
-        } else {
-          status.innerHTML = 'disconnected';
+      const connectionEl = document.querySelector('cordova-connection');
+      const iconEl = document.querySelector('iron-icon');
+
+      connectionEl.addEventListener(
+        'type-changed',
+        function () {
+          const connection = connectionEl.type;
+          let icon;
+
+          switch (connection) {
+            case 'CELL':
+              icon = 'device:signal-cellular-0-bar';
+              break;
+
+            case '2G':
+              icon = 'device:signal-cellular-2-bar';
+              break;
+
+            case '3G':
+              icon = 'device:signal-cellular-3-bar';
+              break;
+
+            case '4G':
+              icon = 'device:signal-cellular-4-bar';
+              break;
+
+            case 'ETHERNET':
+              icon = 'device:usb';
+              break;
+
+            case 'NONE':
+              icon = 'device:signal-cellular-null';
+              break;
+
+            case 'WIFI':
+              icon = 'device:signal-wifi-4-bar';
+              break;
+          }
+
+          iconEl.icon = icon;
         }
-      });
+      );
     </script>
   </body>
 </html>

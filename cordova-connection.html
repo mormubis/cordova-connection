@@ -1,10 +1,17 @@
-<link rel="import" href="../polymer/polymer.html">
+<link href="../polymer/polymer.html"
+  rel="import">
+<link href="../cordova-core/cordova-core.html"
+  rel="import">
+
 <!--
-An element providing connection information for cordova applications.
+An element providing information about the device's cellular and wifi connection.
 
 Example:
 
-    <cordova-connection></cordova-connection>
+    <cordova-connection
+      online
+      type="CELL_4G"
+    ></cordova-connection>
 
 @group Cordova Elements
 @element cordova-connection
@@ -12,7 +19,9 @@ Example:
 -->
 <dom-module id="cordova-connection">
   <template>
-    <cordova-device ready="{{ready}}"></cordova-device>
+    <cordova-core
+      paused="{{_paused_}}"
+      ready="{{_ready_}}"></cordova-core>
   </template>
+  <script src="cordova-connection.js"></script>
 </dom-module>
-<script src="cordova-connection.js"></script>

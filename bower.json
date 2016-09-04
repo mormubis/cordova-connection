@@ -1,12 +1,13 @@
 {
   "name": "cordova-connection",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "authors": [
     "Adrian de la Rosa <adrian@delarosab.me>"
   ],
-  "description": "An element providing connection information for cordova applications.",
+  "description": "An element providing information about the device's cellular and wifi connection.",
   "keywords": [
     "web-component",
+    "web-components",
     "polymer",
     "cordova",
     "connection"
@@ -15,10 +16,11 @@
   "license": "https://raw.githubusercontent.com/adelarosab/cordova-connection/master/LICENSE",
   "homepage": "https://github.com/adelarosab/cordova-connection/",
   "dependencies": {
-    "polymer": "Polymer/polymer#^1.1.0",
-    "cordova-device": "^1.0.0"
+    "polymer": "^1.6.1",
+    "cordova-core": "^1.2.0"
   },
   "devDependencies": {
-    "iron-component-page": "PolymerElements/iron-component-page#^1.0.0"
+    "iron-component-page": "^1.1.7",
+    "iron-icon": "^1.0.10"
   }
 }

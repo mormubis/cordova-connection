@@ -1,36 +1,34 @@
-# cordova-connection
+_[Demo and API docs](https://adelarosab.github.io/cordova-connection)_
 
-An element providing connection information for cordova applications.
+### &lt;cordova-connection&gt;
+`<cordova-connection>` provides information about the device's cellular and 
+wifi connection, and whether the device has an internet connection.
 
+### Installation
+In your `www` project:
+```bash
+bower install --save cordova-connection
+```
 
-## Dependencies
+In your `cordova` project:
+```bash
+cordova plugin add cordova-plugin-network-information
+```
 
-Element dependencies are managed via [Bower](http://bower.io/). You can
-install that via:
+### Usage
+```html
+<cordova-connection
+  online
+  ready
+  type="4G"
+></cordova-connection>
+```
 
-    npm install -g bower
+`<cordova-connection>` allow to read the state of the device's connection
+ in the current moment. `ready` means cordova is fully operative and 
+ `type`  shows the kind of connection.
 
-Then, go ahead and download the element's dependencies:
+---
 
-    bower install
-
-
-## Playing With Your Element
-
-If you wish to work on your element in isolation, we recommend that you use
-[Polyserve](https://github.com/PolymerLabs/polyserve) to keep your element's
-bower dependencies in line. You can install it via:
-
-    npm install -g polyserve
-
-And you can run it via:
-
-    polyserve
-
-Once running, you can preview your element at
-`http://localhost:8080/components/cordova-connection/`, where `cordova-connection` is the name of the directory containing it.
-
-
-## Yeoman support
-
-If you'd like to use Yeoman to scaffold your element that's possible. The official [`generator-polymer`](https://github.com/yeoman/generator-polymer) generator has a [`seed`](https://github.com/yeoman/generator-polymer#seed) subgenerator.
+###### Note
+Due to restrictions `ready` attribute is not shown into attributes table.
