@@ -24,7 +24,7 @@ Polymer(
 
     properties: {
       online: {
-        notify: true
+        notify: true,
         readOnly: true,
         type: Boolean,
         value: false
